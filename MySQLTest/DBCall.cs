@@ -27,6 +27,7 @@ namespace MySQLTest
                 {
                     conn.Open();
                     conn.Close();
+                    logres = true;
                 }
                 catch (MySqlException ex)
                 {
@@ -56,7 +57,7 @@ namespace MySQLTest
             {
                 try 
 {
-                    string query = "SELECT * FROM TestT";
+                    string query = "SELECT * FROM testTB";
                     MySqlCommand cmd = new MySqlCommand(query, conn);
                     conn.Open();
                     MySqlDataAdapter da = new MySqlDataAdapter(cmd);
@@ -90,7 +91,7 @@ namespace MySQLTest
             {
                 using (MySqlConnection conn = new MySqlConnection(mysqlcon.ConnectionString))
                 {
-                    MySqlDataAdapter ms = new MySqlDataAdapter("select * from TestT", conn);
+                    MySqlDataAdapter ms = new MySqlDataAdapter("select * from testTB", conn);
                     MySqlCommandBuilder mcb = new MySqlCommandBuilder(ms);
                     ms.UpdateCommand = mcb.GetUpdateCommand();
                     ms.Update(changes);
