@@ -13,11 +13,11 @@
 
 
 -- Dumping database structure for testDB
-CREATE DATABASE IF NOT EXISTS `testDB` /*!40100 DEFAULT CHARACTER SET latin1 */;
-USE `testDB`;
+CREATE DATABASE IF NOT EXISTS `DKPDB` /*!40100 DEFAULT CHARACTER SET latin1 */;
+USE `DKPDB`;
 
 -- Dumping structure for table testDB.testTB
-CREATE TABLE IF NOT EXISTS `testTB` (
+CREATE TABLE IF NOT EXISTS `DKPTB` (
   `ID` smallint(5) unsigned zerofill NOT NULL AUTO_INCREMENT,
   `name` text,
   `DKP` int(11) DEFAULT NULL,
