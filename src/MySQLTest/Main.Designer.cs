@@ -35,7 +35,6 @@
             this.RBEdit = new System.Windows.Forms.RadioButton();
             this.RBAdd = new System.Windows.Forms.RadioButton();
             this.RBSubtract = new System.Windows.Forms.RadioButton();
-            this.BLogin = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.DGVTest)).BeginInit();
             this.SuspendLayout();
             // 
@@ -47,6 +46,7 @@
             this.DGVTest.Location = new System.Drawing.Point(0, 0);
             this.DGVTest.MultiSelect = false;
             this.DGVTest.Name = "DGVTest";
+            this.DGVTest.ReadOnly = true;
             this.DGVTest.Size = new System.Drawing.Size(421, 258);
             this.DGVTest.TabIndex = 0;
             this.DGVTest.SelectionChanged += new System.EventHandler(this.DGVTest_SelectionChanged);
@@ -119,21 +119,11 @@
             this.RBSubtract.UseVisualStyleBackColor = true;
             this.RBSubtract.CheckedChanged += new System.EventHandler(this.RBSubtract_CheckedChanged);
             // 
-            // BLogin
-            // 
-            this.BLogin.Location = new System.Drawing.Point(15, 357);
-            this.BLogin.Name = "BLogin";
-            this.BLogin.Size = new System.Drawing.Size(100, 23);
-            this.BLogin.TabIndex = 7;
-            this.BLogin.Text = "Login";
-            this.BLogin.UseVisualStyleBackColor = true;
-            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(421, 392);
-            this.Controls.Add(this.BLogin);
+            this.ClientSize = new System.Drawing.Size(421, 352);
             this.Controls.Add(this.RBSubtract);
             this.Controls.Add(this.RBAdd);
             this.Controls.Add(this.RBEdit);
@@ -158,7 +148,6 @@
         private System.Windows.Forms.RadioButton RBEdit;
         private System.Windows.Forms.RadioButton RBAdd;
         private System.Windows.Forms.RadioButton RBSubtract;
-        private System.Windows.Forms.Button BLogin;
     }
 }
 

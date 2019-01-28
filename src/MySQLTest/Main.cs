@@ -94,7 +94,7 @@ namespace MySQLTest
         //Send data to datasource
         private void BSubmit_Click(object sender, EventArgs e)
         {
-            if (TBDKP.Text != null && TBDKP.Text != "" && Err.IsAllDigits(TBDKP.Text))
+            if (TBDKP.Text != null && TBDKP.Text != "" && Err.IsAllDigits(TBDKP.Text) && TBDKP.Text != DGVTest.SelectedRows[0].Cells[2].Value.ToString())
             {
                 int tableval = Convert.ToInt32(DGVTest.SelectedRows[0].Cells[2].Value);
                 if (RBAdd.Checked)
@@ -114,6 +114,10 @@ namespace MySQLTest
                 RefreshDB();
                 DSend = GetChanges();
                 DBCall.SetData();
+                FuncDisable();
+            }
+            else if (TBDKP.Text == DGVTest.SelectedRows[0].Cells[2].Value.ToString())
+            {
                 FuncDisable();
             }
             //Verify input value
