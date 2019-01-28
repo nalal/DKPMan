@@ -9,17 +9,28 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+/*
+ * Author:          Nac/Nalal/Host
+ * Program Name:    DKPMan
+ * License:         GPL-3
+ * Init Date:       24/Jan/2019
+ * Publish Date:    28/Jan/2019
+*/
+
 namespace MySQLTest
 {
     public partial class Main : Form
     {
+        //Init local datasources
         static DataTable DSource = new DataTable();
         public static DataTable DSend = new DataTable();
         public Main()
         {
             InitializeComponent();
+            //Init login page
             LoginC();
         }
+        //Check for close request or load DB data
         void LoginC()
         {
             Form log = new Login();
@@ -33,6 +44,7 @@ namespace MySQLTest
                 LoadDB();
             }
         }
+        //Get DB data and push to Datasource
         void LoadDB()
         {
             DSource = DBCall.GetTest();
@@ -40,16 +52,19 @@ namespace MySQLTest
             DGVTest.DataSource = DSource;
             DGVTest.Columns[0].ReadOnly = true;
         }
+        //Reload Datasource
         void RefreshDB()
         {
             DGVTest.DataSource = null;
             DGVTest.DataSource = DSource;
         }
+        //Get only changes to database
         DataTable GetChanges()
         {
             DataTable changes = ((DataTable)DGVTest.DataSource).GetChanges();
             return changes;
         }
+        //Enable editing of columns
         private void FuncEnable()
         {
             TBDKP.Enabled = true;
@@ -58,6 +73,7 @@ namespace MySQLTest
             RBSubtract.Enabled = true;
             BSubmit.Enabled = true;
         }
+        //Disable editing of columns
         private void FuncDisable()
         {
             TBDKP.Enabled = false;
@@ -66,7 +82,7 @@ namespace MySQLTest
             RBSubtract.Enabled = false;
             BSubmit.Enabled = false;
         }
-
+        //Reload data if row selection changes
         private void DGVTest_SelectionChanged(object sender, EventArgs e)
         {
             if (DGVTest.SelectedRows.Count > 0)
@@ -75,6 +91,7 @@ namespace MySQLTest
                 TBDKP.Text = DGVTest.SelectedRows[0].Cells[2].Value.ToString();
             }
         }
+        //Send data to datasource
         private void BSubmit_Click(object sender, EventArgs e)
         {
             if (TBDKP.Text != null && TBDKP.Text != "" && Err.IsAllDigits(TBDKP.Text))
@@ -99,6 +116,7 @@ namespace MySQLTest
                 DBCall.SetData();
                 FuncDisable();
             }
+            //Verify input value
             else if (!Err.IsAllDigits(TBDKP.Text) && TBDKP.Text != null && TBDKP.Text != "")
             {
                 MessageBox.Show("You can only use nubers.","Input Error");
@@ -108,17 +126,17 @@ namespace MySQLTest
                 MessageBox.Show("Input cannot be blank", "Input Error");
             }
         }
-
+        //Pull table data to text box
         private void RBEdit_CheckedChanged(object sender, EventArgs e)
         {
             TBDKP.Text = DGVTest.SelectedRows[0].Cells[2].Value.ToString();
         }
-
+        //Reset text box data
         private void RBAdd_CheckedChanged(object sender, EventArgs e)
         {
             TBDKP.Text = "0";
         }
-
+        //Reset text box data
         private void RBSubtract_CheckedChanged(object sender, EventArgs e)
         {
             TBDKP.Text = "0";

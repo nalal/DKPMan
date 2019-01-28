@@ -13,6 +13,7 @@ namespace MySQLTest
     {
         public static bool logres = true;
         static MySqlConnectionStringBuilder mysqlcon = new MySqlConnectionStringBuilder();
+        //Test connection
         public static void InitMySQL(string IP, uint port, string user, string pass, string DB)
         {
             mysqlcon.Server = IP;
@@ -47,6 +48,7 @@ namespace MySQLTest
                 }
             }
         }
+        //Load data from DB
         public static DataTable GetTest()
         {
             DataTable DT = new DataTable();
@@ -80,6 +82,7 @@ namespace MySQLTest
             }
             return DT;
         }
+        //Push only changes to the DB if there are any
         public static void SetData()
         {
             DataTable changes = Main.DSend;

@@ -12,12 +12,13 @@ namespace MySQLTest
 {
     public partial class Login : Form
     {
+        //Init close var
         public static bool loggedin = false;
         public Login()
         {
             InitializeComponent();
         }
-
+        //Check input and test connection
         private void BLogin_Click(object sender, EventArgs e)
         {
             if (Err.IsAllDigits(TBPort.Text))
@@ -30,7 +31,7 @@ namespace MySQLTest
                 }
             }
         }
-
+        //Pass close var to main and close application
         private void BCancel_Click(object sender, EventArgs e)
         {
             Application.Exit();

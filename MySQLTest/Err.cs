@@ -8,6 +8,7 @@ namespace MySQLTest
 {
     class Err
     {
+        //Confirm input is only numbers
         public static bool IsAllDigits(string s)
         {
             foreach (char c in s)
